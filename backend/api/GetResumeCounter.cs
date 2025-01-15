@@ -30,6 +30,7 @@ namespace Company.Function
             log.LogInformation("C# HTTP trigger function processed a request.");
 
             // Increment the counter
+            
             updatedCounter = counter;
             updatedCounter.Count += 1;
             
