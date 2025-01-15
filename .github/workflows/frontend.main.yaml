@@ -1,5 +1,5 @@
 name: deploy_frontend
-#deploys when push is made from fontend folder
+#deploys when push is made from frontend folder
 
 on:
     push:
@@ -22,11 +22,10 @@ jobs:
         inlineScript: |
             az storage blob upload-batch \
               --account-name azureresumeamed \
-              --account-key ${{ secrets.STORAGE_ACCOUNT_KEY }} \
+              --account-key "${{ secrets.STORAGE_ACCOUNT_KEY }}" \
               --destination '$web' \
               --source 'frontend/' \
               --overwrite
-
 
     - name: Purge CDN endpoint
       uses: azure/CLI@v1
@@ -34,7 +33,6 @@ jobs:
         inlineScript: |
            az cdn endpoint purge --content-paths  "/*" --profile-name "azureresumeamed" --name "azureresumeamed" --resource-group "azureresume-rg"
 
-  # Azure logout
     - name: logout
       run: |
             az logout
