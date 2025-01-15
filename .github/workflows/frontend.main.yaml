@@ -20,7 +20,13 @@ jobs:
       uses: azure/CLI@v1
       with:
         inlineScript: |
-            az storage blob upload-batch --account-name azureresumeamed -d '$web' -s frontend/ --overwrite
+            az storage blob upload-batch \
+              --account-name azureresumeamed \
+              --account-key ${{ secrets.AZURE_CREDENTIALS }} \
+              -d '$web' \
+              -s frontend/ \
+              --overwrite
+
     - name: Purge CDN endpoint
       uses: azure/CLI@v1
       with:
