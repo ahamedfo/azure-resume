@@ -19,7 +19,7 @@ jobs:
     - name: 'Checkout GitHub Action'
       uses: actions/checkout@v3
 
-    - named: 'login via azure CLI'
+    - name: 'login via azure CLI'
       uses: azure/login@v1
       with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
