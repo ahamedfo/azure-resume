@@ -22,10 +22,11 @@ jobs:
         inlineScript: |
             az storage blob upload-batch \
               --account-name azureresumeamed \
-              --account-key ${{ secrets.AZURE_CREDENTIALS }} \
-              -d '$web' \
-              -s frontend/ \
+              --account-key ${{ secrets.STORAGE_ACCOUNT_KEY }} \
+              --destination '$web' \
+              --source 'frontend/' \
               --overwrite
+
 
     - name: Purge CDN endpoint
       uses: azure/CLI@v1
